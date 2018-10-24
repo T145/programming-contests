@@ -1,6 +1,6 @@
 
 def get_components(s):
-    pairs = []
+    pairs, comps = [], []
     for i, c in enumerate(s):
         if c == "(":
             pairs.append([i,])
@@ -8,10 +8,8 @@ def get_components(s):
             for p in reversed(pairs):
                 if len(p) < 2:
                     p.append(i)
+                    comps.insert(0, s[p[0]+1:p[1]])
                     break
-    comps = []
-    for p in pairs:
-        comps.append(s[p[0]+1:p[1]])
     return [x for x in comps if len(x) > 0]
 
 def char_count(s):
