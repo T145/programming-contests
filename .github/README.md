@@ -11,3 +11,12 @@ Programming contest problems and solutions!
 - [x] Packet Sniffer
 - [x] Senator Bob
 - [ ] Palintrees
+
+## 1996
+
+- [x] The Trouble With Tribbles
+- [x] Idiot Savant or Just an Idiot?
+- [x] Word Counter
+- [x] Buffy the Cipher Slayer
+- [ ] Parenthetical Expressions
+- [x] Pig Latin Translator
