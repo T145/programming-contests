@@ -9,4 +9,4 @@ def f(x):
 x = 1.724
 #print(f(x)) = 7.012735423999999
 
-print('The optimal amount of rainfall for frog viewing is ' + str(x) + ' inches.')
+print('The optimal amount of rainfall for frog viewing is ', x, ' inches.')

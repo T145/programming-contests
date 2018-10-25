@@ -17,4 +17,4 @@ for s in it:
 	msgs.append(msg)
 
 for i, msg in enumerate(msgs):
-	print("Message " + str(i) + " => " + ' '.join(msg))
+	print("Message ", i, " => " + ' '.join(msg))

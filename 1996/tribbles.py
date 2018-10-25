@@ -7,6 +7,6 @@ X = 3**15
 Y = 8
 
 print("Anonymous Crew Member: “Captain, I have it! \
-Direct the blast at the engine when the tribble count reaches exactly " + \
-str(X) + ". We have approximately " + \
-str(Y) + " hours before you must do this.”")
+Direct the blast at the engine when the tribble count reaches exactly ",\
+X, ". We have approximately " ,\
+Y, " hours before you must do this.”")
