@@ -1,9 +1,9 @@
 
-def increasing(L):
-    return all(x < y for x, y in zip(L, L[1:]))
+def increasing(s):
+    return all(x < y for x, y in zip(s, s[1:]))
 
-def decreasing(L):
-    return all(x > y for x, y in zip(L, L[1:]))
+def decreasing(s):
+    return all(x > y for x, y in zip(s, s[1:]))
 
 with open(r"mono.in", "r", encoding="utf-8-sig") as f:
 	lines = f.readlines()
