@@ -1,15 +1,8 @@
 
-def char_freqency(s):
-	d = {}
-	for n in s:
-		if n in d.keys():
-			d[n] += 1
-		else:
-			d[n] = 1
-	return d
+from collections import Counter
 
 s = input().replace(' ', '').lower()
-d = char_freqency(s)
+d = Counter(s)
 c = 0
 
 for i, e in enumerate(d):

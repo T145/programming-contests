@@ -1,9 +1,8 @@
 
 import datetime
 
-s = input().strip()
-d = s.split('/')
-d = list(map(int, d))
+s = input()
+d = list(map(int, s.split('/')))
 
 try:
 	date = datetime.date(d[2], d[0], d[1])

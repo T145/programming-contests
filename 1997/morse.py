@@ -32,11 +32,8 @@ r = []
 with open(r"morse.in", "r", encoding="utf-8-sig") as f:
 	for l in f.readlines():
 		t = []
-		for s in l.replace('\n', '').split(' '):
-			if s:
-				t.append(morse.get(s))
-			else:
-				t.append(' ')
+		for s in l[:-1].split(' '):
+			t.append(morse.get(s) if s else ' ')
 		r.append(re.sub(' +', ' ', ''.join(t)))
 
 print(r)
