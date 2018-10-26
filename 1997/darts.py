@@ -8,6 +8,9 @@ def calculate_score(x,y):
 	else:
 		return scores[sx if x > y else sy]
 
+def align(word, number):
+	return "{:<13s}{:>10d}".format(word, number)
+
 with open(r"darts.in", "r", encoding="utf-8-sig") as f:
 	it = iter(f)
 	for l in it:
@@ -20,9 +23,9 @@ with open(r"darts.in", "r", encoding="utf-8-sig") as f:
 			for i in range(5):
 				coords = list(map(int, n.split()))
 				score = calculate_score(coords[0], coords[1])
-				print('Hit ', i + 1, ' = ', score)
+				print(align('   Hit ' + str(i + 1) + ' =', score))
 				r.append(score)
 				if i < 4:
 					n = next(it)[:-1]
 			print('              ' + ''.ljust(len(l) + 4).replace(' ', '-'))
-			print('Score =', sum(r))
+			print(align('   Score =', sum(r)), '\n')
