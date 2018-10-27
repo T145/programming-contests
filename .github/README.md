@@ -20,3 +20,12 @@ Programming contest problems and solutions!
 - [x] Buffy the Cipher Slayer
 - [ ] Parenthetical Expressions
 - [x] Pig Latin Translator
+
+## 1997
+
+- [x] Al Gore Rhythm
+- [x] Remorseful Sam
+- [x] Wood Chuckin'
+- [x] Bull's Eye
+- [x] Monotonic Words
+- [x] Hailstones
