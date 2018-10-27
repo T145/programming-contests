@@ -3,9 +3,9 @@ with open(r"hail.in", "r", encoding="utf-8-sig") as f:
 	for l in f:
 		n = int(l[:-1])
 		a = []
-		b = [ 4, 2, 1 ]
+		b = { 4, 2, 1 }
 		i = 0
-		while set(a) & set(b) != set(b):
+		while set(a) & b != b:
 			if i == 0:
 				a.append(n)
 			else:
