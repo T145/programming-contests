@@ -1,31 +1,19 @@
-
+from math import hypot
 scores = [ 500, 300, 250, 200, 150, 100, 75, 50, 25, 10 ]
 
-def calculate_score(x,y):
-	sx, sy = int(x/50), int(y/50)
-	if sx > len(scores) or sy > len(scores):
-		return 0
-	else:
-		return scores[sx if x > y else sy]
-
-def align(word, number):
-	return "{:<13s}{:>10d}".format(word, number)
-
-with open(r"darts.in", "r", encoding="utf-8-sig") as f:
-	it = iter(f)
-	for l in it:
-		l = l[:-1]
-		if not any(c.isdigit() for c in l):
-			print('Score Summary for', l)
-			print(''.ljust(len(l) + 18).replace(' ', '-'))
-			n = next(it)[:-1]
-			r = []
-			for i in range(5):
-				coords = list(map(int, n.split()))
-				score = calculate_score(coords[0], coords[1])
-				print(align('   Hit ' + str(i + 1) + ' =', score))
-				r.append(score)
-				if i < 4:
-					n = next(it)[:-1]
-			print('              ' + ''.ljust(len(l) + 4).replace(' ', '-'))
-			print(align('   Score =', sum(r)), '\n')
+with open('darts.in') as file:
+	name = file.readline()
+	while name:
+		total = 0
+		print('Score Summary for {}'.format(name.strip()))
+		print('-' * 23)
+		for i in range(5):
+			x, y = map(int, file.readline().split())
+			idx = int(hypot(x, y) // 50)
+			score = scores[idx] if idx < 10 else 0
+			print('   Hit {} = {:>12}'.format(i + 1, score))
+			total += score
+		print(' ' * 14 + '-' * 9)
+		print('   Score = {:>12}'.format(total))
+		print('\n')
+		name = file.readline()
