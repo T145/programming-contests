@@ -14,6 +14,7 @@ _MACOSX
 !.github
 !.gitignore
 !.gitattributes
+!.gitkeep
 
 # or EditorConfig
 !.editorconfig
