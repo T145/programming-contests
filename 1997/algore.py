@@ -1,20 +1,15 @@
+import datetime
 
 def search_match(t, f):
 	return t.startswith('From veep@whitehouse.gov') and f.startswith('To buddha@whitehouse.gov')
 
-emails = []
-
-with open(r"whmail.log", "r", encoding="utf-8-sig") as f:
-	copy = False
-	lines = f.readlines()
-	for i, line in enumerate(lines):
-		if search_match(line, lines[(i + 1) % len(lines)]):
-			copy = True
-			emails.append(line)
-		elif copy and line.startswith('From'):
-			copy = False
-		elif copy:
-			emails.append(line)
-		print(copy)
-
-print(emails)
+with open('whmail.log') as f:
+	l = f.readline()
+	while l:
+		if search_match(l, f.readline()):
+			date, subject = datetime.datetime.strptime(f.readline()[5:-1], "%A, %B %d, %Y"), f.readline()
+			subject = 'Re:' + subject[7:]
+			limit = date + datetime.timedelta(days=28)
+			sent = limit + datetime.timedelta(days=5)
+			print('From veep@whitehouse.gov\nTo buddha@whitehouse.gov\nDate', sent, '\nSubject', subject, '\nThank you for advising me of your BM. You may not have\nanother BM until', limit)
+		l = f.readline()
