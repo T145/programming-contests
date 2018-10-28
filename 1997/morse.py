@@ -1,4 +1,3 @@
-
 import re
 
 morse = {
@@ -27,13 +26,11 @@ morse = {
 	'--..':'Z'
 }
 
-r = []
-
-with open(r"morse.in", "r", encoding="utf-8-sig") as f:
-	for l in f.readlines():
+with open('morse.in') as f:
+	l = f.readline()
+	while l:
 		t = []
 		for s in l[:-1].split(' '):
 			t.append(morse.get(s) if s else ' ')
-		r.append(re.sub(' +', ' ', ''.join(t)))
-
-print(r)
+		print(re.sub(' +', ' ', ''.join(t)))
+		l = f.readline()

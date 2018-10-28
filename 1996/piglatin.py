@@ -1,10 +1,6 @@
-
-"""
-It's unknown if we have to consider cases like "Hello,,World!"
-and after translating we have "Hello, World!"
-"""
-
 import re
+
+# Consider cases like: "Hello,,World!" => "Hello, World!"?
 
 n = input().strip().replace('ay', '')
 l = re.findall(r"[\w']+", n)
