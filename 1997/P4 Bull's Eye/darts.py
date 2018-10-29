@@ -1,5 +1,6 @@
 from math import hypot
-scores = [ 500, 300, 250, 200, 150, 100, 75, 50, 25, 10 ]
+
+scores = [500, 300, 250, 200, 150, 100, 75, 50, 25, 10]
 
 with open('darts.in') as f:
 	name = f.readline()
@@ -14,6 +15,5 @@ with open('darts.in') as f:
 			print('   Hit {} = {:>12}'.format(i + 1, score))
 			total += score
 		print(' ' * 14 + '-' * 9)
-		print('   Score = {:>12}'.format(total))
-		print('\n')
+		print('   Score = {:>12}'.format(total) + '\n')
 		name = f.readline()
