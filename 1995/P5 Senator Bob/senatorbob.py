@@ -7,12 +7,8 @@ def decode(s):
 	return ''.join(map(chr, map(int, re.findall(r'[01]?\d\d', s[::-1]))))
 
 with open('prob5.in') as f:
-	i, l = 0, f.readline()
-	while l:
-		i += 1
-		l = l[:-1]
-		if l.lower() == 'encode':
-			print('Message', i, '(encoded):', encode(f.readline()))
-		if l.lower() == 'decode':
-			print('Message', i, '(decoded):', decode(f.readline()))
-		l = f.readline()
+	for i, line in enumerate(f):
+		if line.lower().startswith('encode'):
+			print('Message {0} (encoded): {1}'.format(i + 1, encode(f.readline())))
+		if line.lower().startswith('decode'):
+			print('Message {0} (decoded): {1}'.format(i + 1, decode(f.readline())))

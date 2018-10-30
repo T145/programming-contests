@@ -7,11 +7,9 @@ def decreasing(s):
 result = []
 
 with open('mono.in') as f:
-	l = f.readline()
-	while l:
-		l = l[:-1]
-		if decreasing(l) or increasing(l):
-			result.append(l)
-		l = f.readline()
+	for line in f:
+		line = line[:-1]
+		if decreasing(line) or increasing(line):
+			result.append(line)
 
 print(result)

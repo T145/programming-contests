@@ -3,10 +3,9 @@ from math import hypot
 scores = [500, 300, 250, 200, 150, 100, 75, 50, 25, 10]
 
 with open('darts.in') as f:
-	name = f.readline()
-	while name:
+	for line in f:
 		total = 0
-		print('Score Summary for {}'.format(name.strip()))
+		print('Score Summary for {}'.format(line.strip()))
 		print('-' * 23)
 		for i in range(5):
 			x, y = map(int, f.readline().split())
@@ -15,5 +14,4 @@ with open('darts.in') as f:
 			print('   Hit {} = {:>12}'.format(i + 1, score))
 			total += score
 		print(' ' * 14 + '-' * 9)
-		print('   Score = {:>12}'.format(total) + '\n')
-		name = f.readline()
+		print('   Score = {:>12}\n'.format(total))

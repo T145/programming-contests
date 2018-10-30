@@ -3,18 +3,13 @@ import re
 w = ['th', 'kn', 'wh', 'tr', 'sh', 'fl']
 
 with open('pig.dat') as f:
-	l = f.readline()
-	while l:
-		n = l.replace('ay', '')
-		l = re.findall(r"[\w']+", n)
-		for i, s in enumerate(l):
+	for line in f:
+		line = re.findall(r"[\w']+", line.replace('ay', ''))
+		for i, s in enumerate(line):
 			if s.lower()[-2:] in w:
-				p = s[-2:]
-				l[i] = p + s[:-2]
+				line[i] = s[-2:] + s[:-2]
 			elif s[-1:].lower() is not 'y':
-				p = s[-1:]
-				l[i] = p + s[:-1]
+				line[i] = s[-1:] + s[:-1]
 			else:
-				l[i] = s[:-1]
-		print(' '.join(l))
-		l = f.readline()
+				line[i] = s[:-1]
+		print(' '.join(line))
