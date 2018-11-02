@@ -6,7 +6,7 @@ def search_match(t, f):
 with open('whmail.log') as f:
 	for line in f:
 		if search_match(line, f.readline()):
-			date, subject = datetime.datetime.strptime(f.readline()[5:-1], "%A, %B %d, %Y"), f.readline()
+			date, subject = datetime.datetime.strptime(f.readline().strip()[5:], "%A, %B %d, %Y"), f.readline()
 			subject = 'Re:' + subject[7:]
 			limit = date + datetime.timedelta(days=28)
 			sent = limit + datetime.timedelta(days=5)

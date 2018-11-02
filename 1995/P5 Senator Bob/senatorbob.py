@@ -1,7 +1,7 @@
 import re
 
 def encode(s):
-	return ''.join(str(ord(c))[::-1] for c in reversed(s.replace('\n', '')))
+	return ''.join(str(ord(c))[::-1] for c in reversed(s.strip()))
 
 def decode(s):
 	return ''.join(map(chr, map(int, re.findall(r'[01]?\d\d', s[::-1]))))
