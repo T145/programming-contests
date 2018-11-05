@@ -1,6 +1,6 @@
 import re
 
-morse = {
+codes = {
 	'.-':'A',
 	'-...':'B',
 	'-.-.':'C',
@@ -30,5 +30,5 @@ with open('morse.in') as f:
 	for line in f:
 		t = []
 		for s in line.strip().split(' '):
-			t.append(morse.get(s) if s else ' ')
+			t.append(codes.get(s) if s else ' ')
 		print(re.sub(' +', ' ', ''.join(t)))
