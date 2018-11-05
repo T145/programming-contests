@@ -1,20 +1,30 @@
-import datetime
+from datetime import datetime, timedelta
+import re
 
-def get_date(date):
-	prefix = date.strftime('%A, %B ')
-	day = date.strftime('%d').lstrip('0')
-	postfix = date.strftime(', %Y')
-	return '{0}{1}{2}'.format(prefix, day, postfix)
+BM_EMAIL_RE = re.compile(
+    r'^From (?P<From>veep@whitehouse.gov)$\s+'
+    r'^To (?P<To>buddha@whitehouse.gov)$\s+'
+    r'^Date (?P<Date>.*)$\s+'
+    r'^Subject (?P<Subject>.*)$\s+',
+    re.MULTILINE
+)
 
-def readline(f):
-	return f.readline().strip()
+REPLY_TEMPLATE = """From buddha@whitehouse.gov
+To veep@whitehouse.gov
+Date {reply_date}
+Subject Re: {subject}
+
+Thank you for advising me of your BM. You may not have
+another BM until {limit_date}."""
+
+def format_date(date):
+    return re.sub('0([0-9],)', r'\1', date.strftime('%A, %B %d, %Y'))
 
 with open('whmail.log') as f:
-	for line in f:
-		if line.strip() == 'From veep@whitehouse.gov':
-			if readline(f) == 'To buddha@whitehouse.gov':
-				date = datetime.datetime.strptime(f.readline().strip()[5:], "%A, %B %d, %Y")
-				subject = 'Re:' + readline(f)[7:]
-				limit = date + datetime.timedelta(days=28)
-				sent = limit + datetime.timedelta(days=5)
-				print('From veep@whitehouse.gov\nTo buddha@whitehouse.gov\nDate {0}\nSubject {1}\nThank you for advising me of your BM. You may not have\nanother BM until {2}'.format(get_date(sent), subject, get_date(limit)))
+	for email in BM_EMAIL_RE.finditer(f.read()):
+		date = datetime.strptime(email.group('Date'), '%A, %B %d, %Y')
+		print(REPLY_TEMPLATE.format(
+			subject=email.group('Subject'),
+			reply_date=format_date(date + timedelta(days=33)),
+			limit_date=format_date(date + timedelta(days=28)),
+		))
