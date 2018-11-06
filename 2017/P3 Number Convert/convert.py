@@ -60,5 +60,5 @@ while line != '-1':
 	score = 0
 	for c in line:
 		score += values[c]
-	print('{0} = {1}'.format(line, score))
+	print('{} = {}'.format(line, score))
 	line = input()

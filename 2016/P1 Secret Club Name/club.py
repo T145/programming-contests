@@ -10,5 +10,5 @@ def comp_club(s, is_vowel):
 
 line = input()
 while line != 'LAST':
-	print('{0}:{1}'.format(line, comp_club(comp_club(line, False), True)))
+	print('{}:{}'.format(line, comp_club(comp_club(line, False), True)))
 	line = input()

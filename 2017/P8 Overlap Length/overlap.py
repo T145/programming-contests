@@ -13,4 +13,4 @@ for _ in range(int(input())):
 		if s1.endswith(substr):
 			overlap += len(substr)
 			break
-	print('{0} and {1} have an overlap length of {2}'.format(s1, s2, overlap))
+	print('{} and {} have an overlap length of {}'.format(s1, s2, overlap))
