@@ -1,12 +1,6 @@
 import datetime
 
-def normalize_year(s):
-	year = int(s)
-	if year >= 2000:
-		year -= 100
-	return str(year)
-
 with open('prob6.in') as f:
-	for line in f:
-		date = datetime.datetime.strptime(line.strip(), '%y%j').date()
-		print('{0}/{1}'.format(date.strftime('%m/%d'), normalize_year(date.strftime('%Y'))))
+	for n in f.read().split('\n'):
+		date = datetime.datetime.strptime(n, '%y%j').date()
+		print('{}/{}'.format(date.strftime('%m/%d'), date.year if date.year < 2000 else date.year - 100))

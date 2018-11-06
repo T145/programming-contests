@@ -4,12 +4,7 @@ def increasing(s):
 def decreasing(s):
     return all(x > y for x, y in zip(s, s[1:]))
 
-result = []
-
 with open('mono.in') as f:
-	for line in f:
-		line = line[:-1]
-		if decreasing(line) or increasing(line):
-			result.append(line)
-
-print(result)
+	for word in f.read().split('\n'):
+		if increasing(word) or decreasing(word):
+			print(word)
