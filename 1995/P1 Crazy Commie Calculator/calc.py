@@ -1,13 +1,10 @@
 with open('prob1.in') as f:
-	for line in f:
-		a, b = list(map(int, line.split()))
-		la, lb = [], []
-		la.append(a)
-		lb.append(b)
-		while a != 1:
-			a //= 2
-			b *= 2
-			la.append(a)
-			lb.append(b)
-		print(la)
-		print(lb)
+	for n in f.read().split('\n'):
+		a, b = map(int, n.split())
+		pa, pb, r = a, b, []
+		while a > 0:
+			if a & 1:
+				r.append(str(b))
+			a >>= 1
+			b <<= 1
+		print('{} x {} = {} = {}'.format(pa, pb, ' + '.join(r), pa * pb))
